@@ -23,3 +23,6 @@ go.work
 
 # Mac
 .DS_Store
+
+#Build
+api
