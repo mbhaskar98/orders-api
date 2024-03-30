@@ -37,7 +37,7 @@ func (a *App) Start(ctx context.Context) error {
 
 	defer func() {
 		if err := a.rdb.Close(); err != nil {
-			fmt.Errorf("failed to close redis", err)
+			fmt.Println("failed to close redis", err)
 		}
 	}()
 
