@@ -5,14 +5,20 @@ import (
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
-func main()  {
+func main() {
+	router := chi.NewRouter()
+
+	router.Use(middleware.Logger)
+	router.Get("/greet", basicHandler)
+
 	fmt.Println("Hello World")
 
 	server := &http.Server{
-		Addr: ":8080",
-		Handler: http.HandlerFunc(basicHandler),
+		Addr:    ":8080",
+		Handler: router,
 	}
 
 	err := server.ListenAndServe()
